@@ -38,8 +38,8 @@ namespace EmployeeManagement.Views
                 var employee = (Employee)listView.SelectedItem;
                 MessageBox.Show($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
                     $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
-                logger.WriteEvent($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
-                    $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
+                //logger.WriteEvent($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
+                //    $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
             }
 
 
