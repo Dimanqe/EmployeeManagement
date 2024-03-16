@@ -23,23 +23,30 @@ namespace EmployeeManagement.Views
     public partial class EmployeesView : Window
     {
         private ILogger logger;
-        public EmployeesView(IEmployeesViewModel model, ILogger logger)
+        private IEmployeeViewModel _employeeViewModel;
+        private IEmployeesViewModel _employeesViewModel;
+        public EmployeesView(IEmployeesViewModel model, ILogger logger, IEmployeeViewModel employeeViewModel, IEmployeesViewModel employeesViewModel)
         {
             InitializeComponent();
-            DataContext = model;
-           this.logger = logger;
-
+            _employeeViewModel = employeeViewModel;
+            _employeesViewModel = employeesViewModel;
+            this.logger = logger;
+            DataContext = _employeesViewModel;
         }
 
         private void ListView_PreviewMouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            if(sender is ListView listView)
+            if (sender is ListView listView)
             {
                 var employee = (Employee)listView.SelectedItem;
-                MessageBox.Show($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
-                    $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
-                //logger.WriteEvent($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
+                //MessageBox.Show($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
                 //    $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
+                ////logger.WriteEvent($"Имя: {employee.FirstName}\nФамилия: {employee.LastName}\nВозраст: {employee.Age}" +
+                ////    $"\nДолжность: {employee.Position}\nМесто работы: {employee.CompanyName}\nМесто проживания: {employee.CityName}");
+                _employeeViewModel.Employee = employee;
+                var employeeView = new EmployeeView(_employeeViewModel);
+                employeeView.Show();
+
             }
 
 

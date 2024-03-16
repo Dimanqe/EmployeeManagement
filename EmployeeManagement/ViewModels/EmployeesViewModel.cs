@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -15,6 +16,8 @@ namespace EmployeeManagement.ViewModels
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+
 
         protected void OnPropertyChanged([CallerMemberName] string name = null)
         {
@@ -43,7 +46,7 @@ namespace EmployeeManagement.ViewModels
             FillListView();
             FillFilterMessage();
         }
-
+        
         private string _filterMessage;
 
         public string FilterMessage
@@ -95,5 +98,7 @@ namespace EmployeeManagement.ViewModels
                 FilterMessage = "Введите данные для поиска";
             }
         }
+       
+
     }
 }
